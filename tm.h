@@ -102,9 +102,10 @@
 #define TM_KRIGHT TM_ESC "[[C"
 #define TM_KLEFT  TM_ESC "[[D"
 
-// Prefix and suffix for DEC special box drawing characters
-// (https://en.wikipedia.org/wiki/Box-drawing_character#Unix,_CP/M,_BBS)
-// The following chars are available: 6a 6b 6c 6d 6e 71 74 75 76 77 78
+// Prefix and suffix for DEC special alternate character set
+// (https://en.wikipedia.org/wiki/DEC_Special_Graphics)
+// The following chars are available for box drawing:
+// 6a 6b 6c 6d 6e 71 74 75 76 77 78
 #define TM_DEC   TM_ESC "(0"
 #define TM_DECE  TM_ESC "(B"
 
@@ -117,11 +118,11 @@ static struct termios __tm_tstructi; // Initial
 void tm_init(); // Initialise stuff 
 void tm_reset(); // Destroy allocated stuff and reset term to default cfg
 void tm_setxy(unsigned int x, unsigned int y); // Set cursor position
-void tm_getwh(unsigned int *w, unsigned int *h);
+void tm_setcv(char f); // Set cursor visibility
 void tm_setcan(char f); // Set/unset canonical mode
 void tm_setecho(char f); // Set/unset input echo
-
-void tm_f256(unsigned short int c, char *t);
-void tm_b256(unsigned short int c, char *t);
-void tm_cls();
+void tm_getwh(unsigned int *w, unsigned int *h);
+void tm_f256(unsigned short int c, char *t); // Set 256 colours (foreground)
+void tm_b256(unsigned short int c, char *t); // Set 256 colours (background)
+void tm_cls(); // Clear screen
 #endif

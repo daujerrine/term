@@ -1,8 +1,12 @@
-#include "term.h"
+#include "tm.h"
 #include <stdlib.h>
 
+// Demonstrating DEC box drawing characters
+// Unicode characters can be used but they're not likely to be supported
+// Universally, I believe.
 char *boxc[] = {
-    "╔", "╗", "╚", "╝", "═", "║"
+    TM_DEC "\x6c" TM_DECE, TM_DEC "\x6b" TM_DECE, TM_DEC "\x6d" TM_DECE, TM_DEC "\x6a" TM_DECE, 
+    TM_DEC "\x71" TM_DECE, TM_DEC "\x78" TM_DECE
 };
 
 void box(unsigned int x, unsigned int y, unsigned int w, unsigned int h)
@@ -46,12 +50,13 @@ int main()
     printf("Hi");
     
     tm_setxy(8,7);
-    
     tm_getwh(&w, &h);
     printf("width:%d height:%d", w, h);
+    
     tm_setcan(0);
     tm_setecho( 0);
     box(6, 5, w-10, h-10);
+    
     getchar();
     
     tm_cls();

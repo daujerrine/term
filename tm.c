@@ -1,4 +1,4 @@
-#include "term.h"
+#include "tm.h"
 
 void tm_init()
 {
@@ -9,13 +9,6 @@ void tm_init()
 void tm_reset()
 {
     tcsetattr(0, TCSANOW, &__tm_tstructi);
-}
-
-void tm_setxy(unsigned int x, unsigned int y)
-{
-    char q[_TM_CLIM];
-    sprintf(q, TM_ESC "[%u;%uH", y, x);
-    fputs(q, stdout);
 }
 
 void tm_getwh(unsigned int *w, unsigned int *h)
@@ -37,9 +30,16 @@ void tm_setecho(char f)
     tcsetattr(0, TCSANOW, &__tm_tstruct);
 }
 
-void tm_cls()
+void tm_setcv(char f)
 {
-    fputs(TM_CLS, stdout);
+    f?fputs(TM_CRVIS, stdout):fputs(TM_CRIVIS,stdout);
+}
+
+void tm_setxy(unsigned int x, unsigned int y)
+{
+    char q[_TM_CLIM];
+    sprintf(q, TM_ESC "[%u;%uH", y, x);
+    fputs(q, stdout);
 }
 
 void tm_f256(unsigned short int c, char *t)
@@ -50,4 +50,9 @@ void tm_f256(unsigned short int c, char *t)
 void tm_b256(unsigned short int c, char *t)
 {
     sprintf(t, TM_ESC "[48;5;" "%u" "m", c);
+}
+
+void tm_cls(char f)
+{
+    fputs(, stdout);
 }
