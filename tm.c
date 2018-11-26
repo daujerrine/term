@@ -52,7 +52,7 @@ void tm_b256(unsigned short int c, char *t)
     sprintf(t, TM_ESC "[48;5;" "%u" "m", c);
 }
 
-void tm_cls(char f)
+void tm_cls()
 {
-    fputs(, stdout);
+    fputs(TM_CLS, stdout);
 }

@@ -43,6 +43,7 @@ int main()
     int w, h;
     tm_init();
     tm_cls();
+    tm_setcv(0);
     
     tm_setxy(0,0);
     printf("Hello.");
@@ -62,6 +63,7 @@ int main()
     tm_cls();
     tm_setxy(0,0);
     tm_reset();
+    tm_setcv(1);
     
     return 0;
 }
