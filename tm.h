@@ -1,4 +1,4 @@
-//A Small library for program interaction through the terminal
+// term.c - small library for program interaction through the terminal
 // It is more suitable to use termcap.h though.
 
 #ifndef TMLIB_H
@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <termios.h>
 #include <sys/ioctl.h>
+#include <unistd.h>
 
 // A character limit for strings imposed on certain functions.
 #define _TM_CLIM 32
@@ -25,8 +26,8 @@
 #define TM_FCYAN    TM_ESC "[36m"
 #define TM_FLGREY   TM_ESC "[37m"
 #define TM_FGREY    TM_ESC "[90m"
-#define TM_FLGRAY   TM_FLGREY
-#define TM_FGRAY    TM_FGREY
+#define TM_FLGRAY   TM_CLGREY
+#define TM_FGRAY    TM_CGREY
 #define TM_FLRED    TM_ESC "[91m"
 #define TM_FLGREEN  TM_ESC "[92m"
 #define TM_FLYELLOW TM_ESC "[93m"
@@ -89,7 +90,7 @@
 #define TM_CL0 TM_ESC "[1K" // Clear from start to cursor
 #define TM_CLE TM_ESC "[0K" // Clear from cursor to end
 #define TM_CLX TM_ESC "[2K" // Clear whole line
-#define TM_CLS TM_ESC "[2J" // Clear whole screen
+#define TM_CLS TM_ESC "[2J" // Cear whole screen
 
 // Cursor handling
 #define TM_CRIVIS TM_ESC "[?25l"
@@ -101,7 +102,7 @@
 #define TM_KRIGHT TM_ESC "[[C"
 #define TM_KLEFT  TM_ESC "[[D"
 
-// Prefix and suffix for the DEC special alternate character set
+// Prefix and suffix for DEC special alternate character set
 // (https://en.wikipedia.org/wiki/DEC_Special_Graphics)
 // The following chars are available for box drawing:
 // 6a 6b 6c 6d 6e 71 74 75 76 77 78
