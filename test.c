@@ -1,5 +1,5 @@
-//#include "tm.h"
-//#include <stdlib.h>
+#include "tm.h"
+#include <stdlib.h>
 
 // Demonstrating DEC box drawing characters
 // Unicode characters can be used but they're not likely to be supported
